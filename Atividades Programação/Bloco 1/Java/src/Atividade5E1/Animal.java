@@ -13,6 +13,16 @@ public class Animal {
 		this.idade = idade;
 	}
 
+	//Declarção Método emitir som
+	public void emitirSom () {
+		System.out.println();
+	}
+	
+	// Declarção Método açao
+	public void acao () {
+		System.out.println();
+	}
+	
 	// Declaração de get e set
 	public String getNome() {
 		return nome;
