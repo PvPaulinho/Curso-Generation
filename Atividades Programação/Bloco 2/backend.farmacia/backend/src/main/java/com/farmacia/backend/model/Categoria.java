@@ -21,12 +21,12 @@ public class Categoria {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	private String nome_categoria;
+	private String nomeCategoria;
 	
 	private String setor;
 	
 	// REMOVE indica que se uma categoria for atualizada, todos os produtos atrelados a ela vão ser removidos
-	@OneToMany(mappedBy = "categoria", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("categoria")
 	private List<Produto> produto;
 	
@@ -39,12 +39,12 @@ public class Categoria {
 		this.id = id;
 	}
 
-	public String getNome_categoria() {
-		return nome_categoria;
+	public String getNomeCategoria() {
+		return nomeCategoria;
 	}
 
-	public void setNome_categoria(String nome_categoria) {
-		this.nome_categoria = nome_categoria;
+	public void setNomeCategoria(String nomeCategoria) {
+		this.nomeCategoria = nomeCategoria;
 	}
 
 	public String getSetor() {

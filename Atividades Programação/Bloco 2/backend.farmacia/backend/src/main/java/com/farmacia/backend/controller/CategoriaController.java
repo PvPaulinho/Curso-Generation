@@ -2,6 +2,8 @@ package com.farmacia.backend.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.farmacia.backend.model.Categoria;
 import com.farmacia.backend.repository.CategoriaRepository;
 
-@RequestMapping
-@CrossOrigin(origins = "*")
+@RequestMapping("/categoria")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class CategoriaController {
 
@@ -31,29 +33,29 @@ public class CategoriaController {
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
-	@GetMapping("!/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Categoria> buscaPorId (@PathVariable long id){
 		return repository.findById(id)
-				.map(reposta -> ResponseEntity.ok(reposta))
+				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("/nome_categoria{come_categoria}")
-	public ResponseEntity<List<Categoria>> buscaPorNomeCategoria (@PathVariable String nome_categoria){
-		return ResponseEntity.ok(repository.findAllByNomeCategoriaContainingIgnoreCase(nome_categoria));
+	@GetMapping("/nomeCategoria/{nomeCategoria}")
+	public ResponseEntity<List<Categoria>> buscaPorNomeCategoria (@PathVariable String nomeCategoria){
+		return ResponseEntity.ok(repository.findAllByNomeCategoriaContainingIgnoreCase(nomeCategoria));
 	}
 	
 	@PostMapping
-	public ResponseEntity<Categoria> adicionarCategoria (@RequestBody Categoria categoria){
+	public ResponseEntity<Categoria> adicionarCategoria (@Valid @RequestBody Categoria categoria){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(categoria));
 	}
 	
 	@PutMapping
-	public ResponseEntity<Categoria> atualizarCategoria (@RequestBody Categoria categoria){
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(categoria));
+	public ResponseEntity<Categoria> atualizarCategoria (@Valid @RequestBody Categoria categoria){
+		return ResponseEntity.ok(repository.save(categoria));
 	}
 	
-	@DeleteMapping("/id")
+	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
 		repository.deleteById(id);
 	}
