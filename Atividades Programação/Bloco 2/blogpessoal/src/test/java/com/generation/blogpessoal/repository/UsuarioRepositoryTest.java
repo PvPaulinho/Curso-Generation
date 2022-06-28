@@ -28,10 +28,14 @@ public class UsuarioRepositoryTest {
 	@BeforeAll
 	void start() {
 		usuarioRepository.deleteAll();
-		usuarioRepository.save(new Usuario(0L, "Paulo", "pvictor36@gmail.com", "12345678"));
-		usuarioRepository.save(new Usuario(0L, "Paulo Victor Silva", "pvictor35@gmail.com", "12345678"));
-		usuarioRepository.save(new Usuario(0L, "Paulo Damasceno Silva", "pvictor34@gmail.com", "12345678"));
-		usuarioRepository.save(new Usuario(0L, "Paulo Silva", "pvictor40@gmail.com", "12345678"));
+		usuarioRepository.save(new Usuario(0L, "Paulo", "pvictor36@gmail.com", "12345678",
+				"https://avatars.githubusercontent.com/u/89820996?v=4"));
+		usuarioRepository.save(new Usuario(0L, "Paulo Victor Silva", "pvictor35@gmail.com", 
+				"12345678", "https://avatars.githubusercontent.com/u/89820996?v=4"));
+		usuarioRepository.save(new Usuario(0L, "Paulo Damasceno Silva", "pvictor34@gmail.com",
+				"12345678", "https://avatars.githubusercontent.com/u/89820996?v=4"));
+		usuarioRepository.save(new Usuario(0L, "Paulo Silva", "pvictor40@gmail.com", "12345678",
+				"https://avatars.githubusercontent.com/u/89820996?v=4"));
 	}
 	
 	@Test

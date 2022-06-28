@@ -28,6 +28,6 @@ public class SwaggerConfig {
 								.email("pvictor36@gmail.com")))
 				.externalDocs(new ExternalDocumentation()
 						.description("GitHub")
-						.url("https://github.com/PvPaulinho/Curso-Generation/tree/master/Atividades%20Programa%C3%A7%C3%A3o/Bloco%202/blogpessoal"));
+						.url("https://github.com/PvPaulinho"));
 	}
 }

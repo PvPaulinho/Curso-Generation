@@ -26,7 +26,7 @@ public class Usuario {
 	private Long id;
 	
 	@NotNull
-	@Size(min = 2, max = 100)
+	@Size(min = 3, max = 100)
 	private String nome;
 	
 	@Schema(example = "email@email.com.br")
@@ -37,21 +37,22 @@ public class Usuario {
 	@NotNull
 	@Size(min = 8, max = 100)
 	private String senha;
+	
+	private String foto;
 
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<Postagem> postagem;
 	
-	public Usuario(long id,String nome,String usuario, String senha) {
+	public Usuario(long id,String nome,String usuario, String senha, String foto) {
 		this.id = id;
 		this.nome = nome;
 		this.usuario = usuario;
 		this.senha = senha;
+		this.foto = foto;
 	}
 	
-	public Usuario() {
-		
-	}
+	public Usuario() {}
 
 	
 	public Long getId() {
@@ -84,5 +85,21 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public List<Postagem> getPostagem() {
+		return postagem;
+	}
+
+	public void setPostagem(List<Postagem> postagem) {
+		this.postagem = postagem;
 	}
 }
